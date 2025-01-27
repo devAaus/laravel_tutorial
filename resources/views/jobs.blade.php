@@ -3,7 +3,7 @@
         All Jobs
     </x-slot:heading>
 
-    <div class="grid grid-cols-2 gap-4">
+    <div class="flex flex-col gap-4">
         @foreach ($jobs as $job)
             <a
                 href="/job/{{ $job['id'] }}"
@@ -17,5 +17,10 @@
                 </div>
             </a>
         @endforeach
+
+        <div>
+            {{ $jobs->links() }}
+        </div>
     </div>
+
 </x-layout>
