@@ -6,7 +6,7 @@
     <div class="flex flex-col gap-4">
         @foreach ($jobs as $job)
             <a
-                href="/job/{{ $job['id'] }}"
+                href="/jobs/{{ $job['id'] }}"
                 class="px-4 py-2 shadow-lg rounded-lg cursor-pointer border hover:shadow-xl"
             >
                 <div class="text-xs text-blue-500 font-semibold">

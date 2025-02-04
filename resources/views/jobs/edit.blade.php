@@ -5,7 +5,7 @@
 
     <form
         method="POST"
-        action="/job/{{ $job->id }}"
+        action="/jobs/{{ $job->id }}"
     >
         @csrf
         @method('PATCH')
@@ -54,7 +54,7 @@
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
             <a
-                href="/job/{{ $job->id }}"
+                href="/jobs/{{ $job->id }}"
                 class="text-sm/6 font-semibold text-gray-900"
             >Cancel</a>
             <button

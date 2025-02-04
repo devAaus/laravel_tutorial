@@ -8,11 +8,11 @@
     </p>
 
     <div class="mt-4 flex items-center gap-x-4">
-        <x-button href="/job/{{ $job->id }}/edit">Edit Job</x-button>
+        <x-button href="/jobs/{{ $job->id }}/edit">Edit Job</x-button>
 
         <form
             method="POST"
-            action="/job/{{ $job->id }}"
+            action="/jobs/{{ $job->id }}"
         >
             @csrf
             @method('DELETE')
