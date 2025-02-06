@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html
     class="h-full bg-gray-100"
-    lang="en"
->
+    lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta
         content="width=device-width, initial-scale=1.0"
-        name="viewport"
-    >
+        name="viewport">
     <meta
         content="ie=edge"
-        http-equiv="X-UA-Compatible"
-    >
+        http-equiv="X-UA-Compatible">
     <title>Document</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
@@ -28,117 +25,42 @@
                             <img
                                 alt="Your Company"
                                 class="size-8"
-                                src="https://laracasts.com/images/logo/logo-triangle.svg"
-                            >
+                                src="https://laracasts.com/images/logo/logo-triangle.svg">
                         </div>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <x-nav-link
-                                    href="/"
-                                    :active="request()->is('/')"
-                                >Home</x-nav-link>
-                                <x-nav-link
-                                    href="/jobs"
-                                    :active="request()->is('jobs')"
-                                >Jobs</x-nav-link>
-                                <x-nav-link
-                                    href="/contact"
-                                    :active="request()->is('contact')"
-                                >Contact</x-nav-link>
+                                <x-nav-link href="/" :active="request()->is('/')">
+                                    Home
+                                </x-nav-link>
+                                <x-nav-link href="/jobs" :active="request()->is('jobs')">
+                                    Jobs
+                                </x-nav-link>
+                                <x-nav-link href="/contact" :active="request()->is('contact')">
+                                    Contact
+                                </x-nav-link>
                             </div>
                         </div>
                     </div>
                     <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6">
-                            <button
-                                class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                                type="button"
-                            >
-                                <span class="absolute -inset-1.5"></span>
-                                <span class="sr-only">View notifications</span>
-                                <svg
-                                    aria-hidden="true"
-                                    class="size-6"
-                                    data-slot="icon"
-                                    fill="none"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path
-                                        d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </button>
+                        <div class="ml-4 flex items-center gap-3 md:ml-6">
+                            @guest
+                                <x-nav-link href='/login'>
+                                    Login
+                                </x-nav-link>
+                                <x-nav-link href='/register'>
+                                    Register
+                                </x-nav-link>
+                            @endguest
 
-                            <!-- Profile dropdown -->
-                            <div class="relative ml-3">
-                                <div>
-                                    <button
-                                        aria-expanded="false"
-                                        aria-haspopup="true"
-                                        class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                                        id="user-menu-button"
-                                        type="button"
-                                    >
-                                        <span class="absolute -inset-1.5"></span>
-                                        <span class="sr-only">Open user menu</span>
-                                        <img
-                                            alt=""
-                                            class="size-8 rounded-full"
-                                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                        >
-                                    </button>
-                                </div>
-
-                            </div>
+                            @auth
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <x-form-button>
+                                        LogOut
+                                    </x-form-button>
+                                </form>
+                            @endauth
                         </div>
-                    </div>
-                    <div class="-mr-2 flex md:hidden">
-                        <!-- Mobile menu button -->
-                        <button
-                            aria-controls="mobile-menu"
-                            aria-expanded="false"
-                            class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                            type="button"
-                        >
-                            <span class="absolute -inset-0.5"></span>
-                            <span class="sr-only">Open main menu</span>
-                            <!-- Menu open: "hidden", Menu closed: "block" -->
-                            <svg
-                                aria-hidden="true"
-                                class="block size-6"
-                                data-slot="icon"
-                                fill="none"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                            <!-- Menu open: "block", Menu closed: "hidden" -->
-                            <svg
-                                aria-hidden="true"
-                                class="hidden size-6"
-                                data-slot="icon"
-                                fill="none"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M6 18 18 6M6 6l12 12"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -146,59 +68,27 @@
             <!-- Mobile menu, show/hide based on menu state. -->
             <div
                 class="md:hidden"
-                id="mobile-menu"
-            >
-                <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                id="mobile-menu">
+                <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3"> -->
                     <a
                         aria-current="page"
                         class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                        href="/"
-                    >Home</a>
+                        href="/">Home</a>
                     <a
                         class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                        href="/about"
-                    >About</a>
+                        href="/about">About</a>
                     <a
                         class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                        href="/contact"
-                    >Contact</a>
+                        href="/contact">Contact</a>
                 </div>
                 <div class="border-t border-gray-700 pt-4 pb-3">
-                    <div class="flex items-center px-5">
-                        <div class="shrink-0">
-                            <img
-                                alt=""
-                                class="size-10 rounded-full"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            >
-                        </div>
-                        <div class="ml-3">
-                            <div class="text-base/5 font-medium text-white">Aaus</div>
-                            <div class="text-sm font-medium text-gray-400">aaus@example.com</div>
-                        </div>
-                        <button
-                            class="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 focus:outline-hidden"
-                            type="button"
-                        >
-                            <span class="absolute -inset-1.5"></span>
-                            <span class="sr-only">View notifications</span>
-                            <svg
-                                aria-hidden="true"
-                                class="size-6"
-                                data-slot="icon"
-                                fill="none"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                        </button>
+                    <div class="flex items-center gap-3">
+                        <x-nav-link href='/login' class="">
+                            Login
+                        </x-nav-link>
+                        <x-nav-link href='/register' class="bg-blue-500">
+                            Register
+                        </x-nav-link>
                     </div>
                 </div>
             </div>

@@ -3,68 +3,43 @@
         Create a Job
     </x-slot:heading>
 
-    <form
-        method="POST"
-        action="/jobs"
-    >
+    <form method="POST" action="/jobs">
         @csrf
         <div class="border-b border-gray-900/10 pb-12">
             <div class="space-y-4 max-w-xl">
-                <div class="sm:col-span-3">
-                    <label
-                        for="title"
-                        class="block text-sm/6 font-medium text-gray-900"
-                    >Title</label>
-                    <input
-                        type="text"
+                <x-form-field>
+                    <x-form-label for='title'>
+                        Title
+                    </x-form-label>
+                    <x-form-input
                         name="title"
                         id="title"
-                        placeholder="Software Engineer"
-                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        required
-                    >
-                    @error('title')
-                        <p class="mt-1 text-sm/6 text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                <div class="sm:col-span-3">
-                    <label
-                        for="salary"
-                        class="block text-sm/6 font-medium text-gray-900"
-                    >Salary</label>
-                    <input
                         type="text"
+                        placeholder='Software Engineer'
+                        required />
+                    <x-form-error name='title' />
+                </x-form-field>
+
+                <x-form-field>
+                    <x-form-label for='salary'>
+                        Salary
+                    </x-form-label>
+                    <x-form-input
                         name="salary"
                         id="salary"
-                        placeholder="$100,000"
-                        class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                        required
-                    >
-                    @error('salary')
-                        <p class="mt-1 text-sm/6 text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
+                        type="text"
+                        placeholder='$100000'
+                        required />
+                    <x-form-error name='salary' />
+                </x-form-field>
             </div>
-
-            {{-- @if ($errors->any())
-                <ul class="mt-6 list-disc list-inside text-sm/6 text-red-600">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif --}}
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
             <button
                 type="button"
-                class="text-sm/6 font-semibold text-gray-900"
-            >Cancel</button>
-            <button
-                type="submit"
-                class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >Save</button>
+                class="text-sm/6 font-semibold text-gray-900">Cancel</button>
+            <x-form-button>Save</x-form-button>
         </div>
     </form>
 
